@@ -1,28 +1,19 @@
-const express = require('express');
-const app = express();
-const router = express.Router();
 require("dotenv").config();
+const path = require("path");
+const express = require("express");
+const { testConnection } = require('./config/connection');
+const routes = require("./controllers/index");
 
-const PORT = process.env.PORT;
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-// Middleware to parse JSON
+
+testConnection()
+
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+// app.use(express.static(path.join(__dirname, "public")));
 
-// Simple route
-app.get('/', (req, res) => {
-    res.json({
-        message: 'Loan Tracker API is running!',
-        timestamp: new Date().toLocaleString()
-    });
-});
+app.use(routes);
 
-app.get('/health', (req, res) => {
-    res.json({ status: 'OK' });
-});
-
-
-// Start server
-app.listen(PORT, () => {
-    console.log(`Server running on port http://localhost:${PORT}`);
-    console.log(`Environment: ${process.env.NODE_ENV}`);
-});
+app.listen(PORT, () => console.log("Now listening an PORT " + PORT));

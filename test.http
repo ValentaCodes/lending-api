@@ -1,5 +1,14 @@
 ### GET /
-GET localhost:3000
+GET localhost:3001
 
 ### GET /health
-GET localhost:3000/health
+GET localhost:3001/health
+
+#### GET/api
+GET localhost:3001/api
+
+### TEST db
+GET localhost:3001/api/db-test
+
+### TEST user
+GET localhost:3001/user/users
