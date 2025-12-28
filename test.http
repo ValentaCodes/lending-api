@@ -1,0 +1,5 @@
+### GET /
+GET localhost:3000
+
+### GET /health
+GET localhost:3000/health
