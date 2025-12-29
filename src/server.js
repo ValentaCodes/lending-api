@@ -1,16 +1,19 @@
-const express = require('express');
+require("dotenv").config();
+const path = require("path");
+const express = require("express");
+const { testConnection } = require('./config/connection');
+const routes = require("./routes/index");
+
 const app = express();
+const PORT = process.env.PORT || 3001;
 
-// Middleware to parse JSON
+
+testConnection();
+
+
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
-// Simple route
-app.get('/', (req, res) => {
-    res.json({ message: 'Loan Tracker API' });
-});
+app.use(routes);
 
-// Start server
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on port http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log("Now listening on http://localhost:" + PORT));
