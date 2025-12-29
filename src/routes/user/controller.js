@@ -1,5 +1,6 @@
 import {Request, Response} from "express";
 
 export const getUsers = (req, res) => {
-    res.send(200, "ok")
+    res.send("ok, this has been a success")
+    res.statusCode(200)
 }

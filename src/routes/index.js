@@ -1,10 +1,10 @@
-import express , { Router } from "express"
-import loan from "./loanRoutes"
-import user from "./user"
+const router = require("express").Router();
 
-const v1 = express.Router();
+const userRoutes = require('/user');
 
-v1.use("/user", user)
-v1.use("/loans", loan)
+// main routing index
+// router.use('/', homeRoute);
+// router.use('/api', apiRoutes);
+router.use('/user', userRoutes);
 
-module.exports = v1
+module.exports = router
