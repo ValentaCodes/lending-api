@@ -1,12 +1,18 @@
 const User = require('../models/User');
 
-const getUsers = async (req, res) => {
+const getAllUsers = async (req, res) => {
     try {
-        await User.findAll()
-        res.status(200)
+        const users = await User.findAll(); // Save result
+        res.status(200).json({
+            success: true,
+            users: users
+        });
     } catch (error) {
-        res.status(500)
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
     }
 };
 
-module.exports = { getUsers };
+module.exports = { getAllUsers };

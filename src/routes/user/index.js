@@ -1,6 +1,7 @@
-const users = require("express").Router();
-import {getUsers} from "./controller"
+const router = require("express").Router();
 
-users.get("/users", getUsers)
+const {getAllUsers} = require("../../controllers/userController")
 
-module.exports = users;
+router.get("/", getAllUsers)
+
+module.exports = router;
