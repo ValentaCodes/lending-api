@@ -1,23 +1,7 @@
 const router = require("express").Router();
+const {getHomepage, getHealth} = require("../controllers/homeController");
 
-// This is the '/' route "main page"
-router.get("/", async (req, res) => {
-    try {
-        res.send("lending app api");
-        res.status(200);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-
-// api health test route
-router.get("/health", async (req, res) => {
-    try {
-        res.send("OK");
-        res.status(200);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+router.get("/", getHomepage);
+router.get("/health", getHealth);
 
 module.exports = router;
