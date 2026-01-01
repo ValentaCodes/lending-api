@@ -15,4 +15,19 @@ const getAllUsers = async (req, res) => {
     }
 };
 
-module.exports = { getAllUsers };
+const getUser = async () => {
+    try {
+        const user = await User.findUser();
+        res.status(200).json({
+            success: true,
+            user: user
+        })
+    } catch (e) {
+        res.status(500).json({
+            success: false,
+            error: e.message
+        })
+    }
+}
+
+module.exports = [getAllUsers, getUser];
