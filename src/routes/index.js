@@ -1,10 +1,14 @@
-const router = require("express").Router();
-const homeRoute = require("../controllers/homeController")
-const apiRoutes = require('./api');
-const authRoutes = require('./authRoutes.js');
+// src/routes/index.js
+import { Router } from "express";
+import homeRoutes from "./homeRoutes.js";
+import apiRoutes from "./api/index.js";
+// import authRoutes from "./authRoutes.js";
 
-router.use('/', homeRoute)
-router.use('/api', apiRoutes);
-router.use('/authRoutes', authRoutes);
+const router = Router();
 
-module.exports = router
+// Mount sub-routers
+router.use("/", homeRoutes);
+router.use("/api", apiRoutes);
+// router.use("/authRoutes", authRoutes);
+
+export default router;

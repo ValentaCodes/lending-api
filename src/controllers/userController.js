@@ -1,6 +1,6 @@
-const User = require('../models/User');
+import User from "../models/User.js"
 
-const getAllUsers = async (req, res) => {
+export const getAllUsers = async (req, res) => {
     try {
         const users = await User.findAll();
         res.status(200).json({
@@ -15,7 +15,7 @@ const getAllUsers = async (req, res) => {
     }
 };
 
-const getUser = async () => {
+export const getUser = async (req, res) => {
     try {
         const user = await User.findUser();
         res.status(200).json({
@@ -29,5 +29,3 @@ const getUser = async () => {
         })
     }
 }
-
-module.exports = [getAllUsers, getUser];

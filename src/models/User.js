@@ -1,16 +1,18 @@
-const {pool} = require('../config/connection');
+import pkg from '../config/connection.js';
 
-const User = {
+export const {pool} = pkg;
+
+export const User = {
     findAll: async () => {
-        const [users] = await pool.query("select * from users");
+        const [users] = await pool.query('SELECT * FROM users');
         return users;
     },
 
     findUser: async () => {
         const id = req.query();
-        const [user] = await pool.query('SELECT * from users where id=$1', [id])
+        const [user] = await pool.query('SELECT * from users where id= ?', [id])
         return user;
     }
 };
 
-module.exports = User;
+export default {User,  pool}

@@ -1,21 +1,19 @@
 // This is the '/' route "main page"
-const getHomepage = async (req, res) => {
+export function getHomepage(req, res) {
     try {
-        res.send("lending app api");
+        res.send("Homepage");
         res.status(200);
     } catch (error) {
         res.status(500).json(error);
     }
-};
+}
 
 // api health test route
-const getHealth = async (req, res) => {
+export function getHealth(req, res) {
     try {
         res.send("OK");
         res.status(200);
     } catch (error) {
         res.status(500).json(error);
     }
-};
-
-module.exports = [getHomepage, getHealth];
+}

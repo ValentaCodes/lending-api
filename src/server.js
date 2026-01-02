@@ -1,14 +1,13 @@
-require("dotenv").config();
-const path = require("path");
-const express = require("express");
-const { testConnection } = require('./config/connection');
-const routes = require("./routes/index");
+import express from "express";
+import { testConnection } from "./config/connection.js";
+
+import routes from "./routes/index.js"
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 
-testConnection();
+await testConnection();
 
 
 app.use(express.json());
