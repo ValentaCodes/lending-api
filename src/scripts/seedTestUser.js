@@ -45,11 +45,9 @@ async function upsertTestUser() {
     console.error('❌ Failed to insert test user:', err.message);
     process.exitCode = 1;
   } finally {
-    // Close the pool gracefully
     try {
       await pool.end();
     } catch (e) {
-      // ignore
     }
   }
 }

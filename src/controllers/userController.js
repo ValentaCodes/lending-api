@@ -1,8 +1,8 @@
-const User = require('../models/User');
+import User from "../models/User.js"
 
-const getAllUsers = async (req, res) => {
+export const getAllUsers = async (req, res) => {
     try {
-        const users = await User.findAll(); // Save result
+        const users = await User.findAll();
         res.status(200).json({
             success: true,
             users: users
@@ -15,4 +15,17 @@ const getAllUsers = async (req, res) => {
     }
 };
 
-module.exports = { getAllUsers };
+export const getUser = async (req, res) => {
+    try {
+        const user = await User.findUser();
+        res.status(200).json({
+            success: true,
+            user: user
+        })
+    } catch (e) {
+        res.status(500).json({
+            success: false,
+            error: e.message
+        })
+    }
+}
