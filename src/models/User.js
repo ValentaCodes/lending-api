@@ -9,9 +9,8 @@ export const User = {
         return users;
     },
 
-    findUser: async () => {
-        const id = req.query();
-        const [user] = await poolConn.query('SELECT * from users where id= ?', [id])
+    findUser: async (id) => {
+        const [user] = await poolConn.query('SELECT * from users where id=?', [id])
         return user;
     }
 };
