@@ -11,7 +11,10 @@ export function getHomepage(req, res) {
 // api health test route
 export function getHealth(req, res) {
     try {
-        res.send("OK");
+        res.send({
+            status: "OK",
+            timestamp: new Date().toLocaleString()
+        });
         res.status(200);
     } catch (error) {
         res.status(500).json(error);

@@ -1,4 +1,3 @@
-// src/routes/index.js
 import { Router } from "express";
 import homeRoutes from "./homeRoutes.js";
 import apiRoutes from "./api/index.js";
@@ -6,7 +5,7 @@ import apiRoutes from "./api/index.js";
 
 const router = Router();
 
-// Mount sub-routers
+// Mount sub-routes
 router.use("/", homeRoutes);
 router.use("/api", apiRoutes);
 // router.use("/authRoutes", authRoutes);
