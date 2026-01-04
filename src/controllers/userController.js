@@ -1,5 +1,6 @@
 import {User} from "../models/User.js"
 
+//Retrieve all users in database
 export const getAllUsers = async (req, res) => {
     try {
         const users = await User.findAll();
@@ -21,10 +22,10 @@ export const getAllUsers = async (req, res) => {
     }
 };
 
+//Retrieves a single user from the database
 export const getUser = async (req, res) => {
 
     try {
-        console.log(req.params)
         const { id } = req.params;
         const user = await User.findUser(id);
 
